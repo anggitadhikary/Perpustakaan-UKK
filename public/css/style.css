@@ -2395,6 +2395,7 @@ a {
 .single-search-product-wrapper {
     padding: 12px 20px 10px 30px;
     border: 1px solid #eeeeee;
+    border-radius: 5px;
 }
 .single-search-product img {
     max-width: 70px;

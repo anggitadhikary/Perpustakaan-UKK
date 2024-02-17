@@ -27,8 +27,11 @@ Route::get('/buku-detail', function () {
 //     return view('struk');
 // });
 
+Route::get('/koleksi', function () {
+    return view('koleksi');
+});
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard1');
 });
 
 Route::get('/buku', function () {
