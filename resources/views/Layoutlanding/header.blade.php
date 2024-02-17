@@ -3,10 +3,10 @@
      <div class="main_menu">
          <nav class="navbar navbar-expand-lg navbar-light">
              <div class="container">
-                 <a class="navbar-brand logo_h" href="{{ url('/') }}"><img src="img/logo.png" alt=""></a>
-                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                     aria-label="Toggle navigation">
+                 {{-- <a class="navbar-brand logo_h" href="{{ url('/') }}"><img src="img/logo.png" alt=""></a> --}}
+                 <h2>Litlend</h2>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
@@ -19,6 +19,8 @@
                                  aria-haspopup="true" aria-expanded="false">Buku</a>
                              <ul class="dropdown-menu">
                                  <li class="nav-item"><a class="nav-link" href="{{ url('kategori') }}">List Buku</a>
+                                 </li>
+                                 <li class="nav-item"><a class="nav-link" href="{{ url('struk') }}">Struk</a>
                                  </li>
                              </ul>
                          </li>

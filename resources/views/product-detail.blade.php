@@ -45,18 +45,7 @@
                             something that can make your interior look awesome, and at the same time give you the pleasant
                             warm feeling
                             during the winter.</p>
-                        <div class="product_count">
 
-                            <input type="text" name="qty" id="sst" maxlength="12" value="1"
-                                title="Quantity:" class="input-text qty">
-                            <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                            <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                        </div>
-                        <a class="button primary-btn" href="#">Add to Cart</a>
                         <div class="card_area d-flex align-items-center">
                             <a class="icon_btn" href="#"><i class="bi bi-heart"></i></a>
                         </div>

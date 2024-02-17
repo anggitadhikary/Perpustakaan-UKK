@@ -22,9 +22,21 @@ Route::get('/kategori', function () {
 Route::get('/buku-detail', function () {
     return view('product-detail');
 });
-Route::get('/struk', function () {
-    return view('struk');
-});
+
+// Route::get('/struk', function () {
+//     return view('struk');
+// });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
+});
+
+Route::get('/buku', function () {
+    return view('buku.index');
+});
+Route::get('buku/edit', function () {
+    return view('buku.edit');
+});
+Route::get('buku/create', function () {
+    return view('buku.create');
 });

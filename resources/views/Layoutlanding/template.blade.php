@@ -24,7 +24,6 @@
 
     @include('Layoutlanding.header')
     @yield('content')
-    @include('Layoutlanding.footer')
 
 
     <script src="{{ asset('vendors/jquery/jquery-3.2.1.min.js') }}"></script>
