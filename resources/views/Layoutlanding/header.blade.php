@@ -52,8 +52,6 @@
 
                      <ul class="nav-shop">
 
-
-
                          {{-- @guest --}}
 
                          <li class="nav-item"><a class="button button-header" href="">Login</a></li>

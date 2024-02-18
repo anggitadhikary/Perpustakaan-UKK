@@ -1,13 +1,23 @@
 @extends('Layoutlanding.template')
 @section('content')
+    <section class="blog-banner-area" id="category">
+        <div class="container h-100">
+            <div class="blog-banner">
+                <div class="text-center">
+                    <h1>Book Collection</h1>
+                    <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Book Collection</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- ================ top product area start ================= -->
     <section class="related-product-area pt-5">
         <div class="container">
-            <div class="section-intro pb-60px">
-                <p>Your book collection</p>
-                <h2> <span class="section-intro__style">Collection</span></h2>
-            </div>
-
             <div class="row mt-30 pb-5">
                 <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
                     <div class="single-search-product-wrapper mb-2">

@@ -47,8 +47,16 @@
                             during the winter.</p>
 
                         <div class="card_area d-flex align-items-center">
-                            <a class="icon_btn" href="#"><i class="bi bi-heart"></i></a>
+                            <form action="" method="POST">
+
+                                <button class="icon_btn"><i class="bi bi-heart"></i></button>
+                            </form>
+                            <form action="" method="POST">
+
+                                <button class="icon_btnrmv"><i class="bi bi-trash3"></i></button>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>

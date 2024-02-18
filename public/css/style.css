@@ -3694,7 +3694,27 @@ a {
     transition: all 0.3s ease 0s;
     margin-right: 10px;
     z-index: 1;
+    border: 1px solid transparent;
 }
+
+.s_product_text .card_area .icon_btnrmv {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    background: #dc3545;
+    border-radius: 10px;
+    display: inline-block;
+    color: white;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    margin-right: 10px;
+    z-index: 1;
+    border: 1px solid transparent;
+}
+
 .s_product_text .card_area .icon_btn i,
 .s_product_text .card_area .icon_btn span {
     line-height: 40px;
