@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="col-12">
-                    <label for="deksripsi" class="form-label">Deksripsi</label>
-                    <input type="text" class="form-control" id="deksripsi" name="deksripsi">
+                    <label for="deskripsi" class="form-label">deskripsi</label>
+                    <input type="text" class="form-control" id="deskripsi" name="deskripsi">
                 </div>
                 <div class="col-12">
                     <label for="stok" class="form-label">Stok</label>

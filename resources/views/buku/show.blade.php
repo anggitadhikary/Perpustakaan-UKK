@@ -14,14 +14,14 @@
                         </div>
 
                         <div class="post-img mt-3 mx-auto text-center">
-                            <img src="" alt="" class="img-fluid"
+                            <img src="{{ Storage::url('public/buku/') . $buku->gambar }}" alt="" class="img-fluid"
                                 style="max-height: 320px; border-radius: 5px;">
                         </div>
-                        <h2 class="text-center mt-3">judul</h2>
+                        <h2 class="text-center mt-3">{{ $buku->judul }}</h2>
 
 
                         <div class="mt-3">
-                            <p>judul</p>
+                            <p>{{ $buku->deskripsi }}</p>
                         </div>
 
 
