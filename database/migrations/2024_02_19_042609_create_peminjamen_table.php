@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('id_buku');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
-            $table->enum('status', ['0', '1']);
+            $table->enum('status', ['0', '1'])->default('0');
             $table->integer('jumlah');
             $table->timestamps();
         });
@@ -28,15 +28,20 @@ return new class extends Migration
         FOR EACH ROW 
         BEGIN
         IF NEW.status = "0" THEN 
-        UPDATE buku SET stok = stok - NEW.jumlah WHERE id_buku = NEW.id_buku
+        UPDATE buku SET stok = stok - NEW.jumlah WHERE id_buku = NEW.id_buku;
+        END IF;
+        END;
         ');
+        
         DB::unprepared('
         CREATE TRIGGER max_stock 
         AFTER UPDATE ON peminjaman
         FOR EACH ROW 
         BEGIN
         IF NEW.status = "1" THEN 
-        UPDATE buku SET stok = stok + NEW.jumlah WHERE id_buku = NEW.id_buku
+        UPDATE buku SET stok = stok + NEW.jumlah WHERE id_buku = NEW.id_buku;
+        END IF;
+        END;
         ');
     }
 

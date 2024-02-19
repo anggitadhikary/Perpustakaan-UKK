@@ -2,7 +2,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
       <div class="d-flex align-items-center justify-content-between">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="{{ url('dashboard') }}" class="logo d-flex align-items-center">
               <img src="assets/img/logo.png" alt="">
               <span class="d-none d-lg-block">NiceAdmin</span>
           </a>
@@ -29,8 +29,8 @@
                   <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                       data-bs-toggle="dropdown">
                       <span class="d-none d-md-block dropdown-toggle ps-2"></span>
+                      {{ auth()->user()->name }}
                   </a><!-- End Profile Iamge Icon -->
-                  {{-- {{ auth()->user()->name }} --}}
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                       <li>
                           <a class="dropdown-item d-flex align-items-center" href="{{ url('profile') }}">
@@ -63,11 +63,15 @@
                       </li>
 
                       <li>
-                          {{-- <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}">
-                              <i class="bi bi-box-arrow-right"></i>
-                              <span>Sign Out</span>
-                          </a> --}}
-                          {{-- <form method="POST" action="{{ route('logout') }}">
+                          {{-- <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                              <a class="dropdown-item d-flex align-items-center" href="">
+                                  <i class="bi bi-box-arrow-right"></i>
+                                  <span h>Sign Out</span>
+
+                              </a>
+                          </form> --}}
+                          <form method="POST" action="{{ route('logout') }}">
                               @csrf
 
                               <x-responsive-nav-link :href="route('logout')"
@@ -75,7 +79,7 @@
                                                 this.closest('form').submit();">
                                   {{ __('Log Out') }}
                               </x-responsive-nav-link>
-                          </form> --}}
+                          </form>
                       </li>
 
                   </ul><!-- End Profile Dropdown Items -->

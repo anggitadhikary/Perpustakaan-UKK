@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,7 @@ Route::group(['middleware' => 'role:admin,petugas'], function () {
     })->name('dashboard');
 
     Route::resource('buku', BukuController::class);
+    Route::resource('pinjam', PeminjamanController::class);
 });
 
 Route::group(['middleware' => 'role:peminjam'], function () {

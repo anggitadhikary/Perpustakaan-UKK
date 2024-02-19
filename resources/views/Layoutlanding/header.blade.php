@@ -43,6 +43,18 @@
                                      </li>
                                      <li class="nav-item"> <a href="{{ url('profile') }}" class="nav-link">Profile</a>
                                      </li>
+                                     <li class="nav-item">
+                                         <form method="POST" action="{{ route('logout') }}">
+                                             @csrf
+
+                                             {{-- <a href="{{ route('logout') }}" class="nav-link">Logout</a> --}}
+                                             <x-responsive-nav-link :href="route('logout')"
+                                                 onclick="event.preventDefault();
+                                                              this.closest('form').submit();">
+                                                 {{ __('Log Out') }}
+                                             </x-responsive-nav-link>
+                                         </form>
+                                     </li>
                                  @endif
 
 
