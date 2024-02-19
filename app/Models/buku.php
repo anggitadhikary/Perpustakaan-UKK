@@ -28,6 +28,10 @@ class buku extends Model
     {
         return $this->hasMany(peminjaman::class, 'id_buku');
     }
+    public function koleksi()
+    {
+        return $this->hasMany(koleksi::class, 'id_koleksi');
+    }
 
     public function sluggable(): array
     {
