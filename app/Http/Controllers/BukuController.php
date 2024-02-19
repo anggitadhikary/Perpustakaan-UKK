@@ -9,6 +9,13 @@ use Illuminate\View\View;
 
 class BukuController extends Controller
 {
+    public function list()
+    {
+        $buku = buku::latest()->paginate(5);
+        // dd($buku);
+        return view('kategori', compact('buku'));
+    }
+
     /**
      * Display a listing of the resource.
      */

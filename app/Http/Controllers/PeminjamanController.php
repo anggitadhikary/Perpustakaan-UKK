@@ -14,8 +14,10 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        
-        $pinjam = peminjaman::latest()->paginate(5);
+
+        $pinjam = peminjaman::latest()->with('user')->with('buku')->paginate(5);
+        // $pinjam = peminjaman::latest()->paginate(5);
+
         // dd($pinjam);
         return view('peminjaman.index', compact('pinjam'));
     }
@@ -63,7 +65,6 @@ class PeminjamanController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -71,7 +72,11 @@ class PeminjamanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $peminjamList = User::where('role', 'peminjam')->get();
+        $bukuList = buku::all();
+        $pinjam = peminjaman::findorFail($id);
+
+        return view('peminjaman.edit', compact('peminjamList', 'bukuList', 'pinjam'));
     }
 
     /**
@@ -79,7 +84,19 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'status' => 'required'
+        ], [
+            'status.required' => 'Status harus di isi'
+        ]);
+
+        $pinjam = peminjaman::findorFail($id);
+
+        $pinjam->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->to('pinjam')->with('succes', 'Berhasil edit data');
     }
 
     /**
@@ -87,6 +104,9 @@ class PeminjamanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pinjam = peminjaman::findorFail($id);
+
+        $pinjam->delete();
+        return redirect()->to('pinjam')->with('succes', 'Berhasil hapus data');
     }
 }

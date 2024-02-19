@@ -27,6 +27,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
+    protected $primaryKey = 'id';
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,4 +49,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function peminjaman()
+    {
+        return $this->hasMany(peminjaman::class, 'id');
+    }
 }

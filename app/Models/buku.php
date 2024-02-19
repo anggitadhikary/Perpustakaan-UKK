@@ -24,6 +24,10 @@ class buku extends Model
         'genre',
         'stok',
     ];
+    public function peminjaman()
+    {
+        return $this->hasMany(peminjaman::class, 'id_buku');
+    }
 
     public function sluggable(): array
     {

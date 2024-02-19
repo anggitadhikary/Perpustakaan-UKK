@@ -5,10 +5,10 @@
             <h5 class="card-title">Update Peminjaman</h5>
 
             <!-- Vertical Form -->
-            <form action='{{ url('pinjam/' . $pinjam->id_peminjaman) }}' method='post' class="row g-3"
-                enctype="multipart/form-data">
+            <form action="{{ url('pinjam/' . $pinjam->id_peminjaman ) }}" class="row g-3" method="POST">
                 @csrf
                 @method('PUT')
+
                 <div class="col-12">
                     <label for="id_buku" class="form-label">Buku</label>
                     <div class="col-sm-12">
@@ -37,6 +37,7 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="col-12">
                     <label for="tanggal_pinjam" class="form-label">Tanggal Pinjam</label>
                     <input type="date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam"
@@ -53,11 +54,12 @@
                     <input type="number" class="form-control" id="jumlah" name="jumlah" value="{{ $pinjam->jumlah }}"
                         disabled>
                 </div>
+
                 <fieldset class="row mb-3 mt-4">
                     <legend class="col-form-label col-sm-2 pt-0">Status</legend>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="0"
+                            <input class="form-check-input  " type="radio" name="status" id="status" value="0"
                                 {{ $pinjam->status == 0 ? 'checked' : '' }}>
                             <label class="form-check-label" for="status">
                                 Belum dikembalikan
@@ -75,7 +77,7 @@
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    {{-- <button type="reset" class="btn btn-secondary">Reset</button> --}}
                 </div>
             </form><!-- Vertical Form -->
 

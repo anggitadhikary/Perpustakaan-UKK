@@ -20,9 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/kategori', function () {
-    return view('kategori');
-});
+// Route::get('/kategori', function () {
+//     return view('kategori');
+// });
 Route::get('/buku-detail', function () {
     return view('product-detail');
 });
@@ -45,6 +45,8 @@ Route::group(['middleware' => 'role:peminjam'], function () {
         return view('peminjam');
     })->name('peminjam');
 });
+
+Route::get('/kategori', [BukuController::class, 'list']);
 
 
 require __DIR__ . '/auth.php';
