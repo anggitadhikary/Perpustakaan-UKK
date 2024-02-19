@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 Route::get('/kategori', function () {
     return view('kategori');
 });
@@ -23,23 +26,34 @@ Route::get('/buku-detail', function () {
     return view('product-detail');
 });
 
-// Route::get('/struk', function () {
-//     return view('struk');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-Route::get('/koleksi', function () {
-    return view('koleksi');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard1');
+Route::group(['middleware' => 'role:admin,petugas'], function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::resource('buku', BukuController::class);
 });
 
-Route::get('/buku', function () {
-    return view('buku.index');
+Route::group(['middleware' => 'role:peminjam'], function () {
+    Route::get('/peminjam', function () {
+        return view('peminjam');
+    })->name('peminjam');
 });
-Route::get('buku/edit', function () {
-    return view('buku.edit');
-});
-Route::get('buku/create', function () {
-    return view('buku.create');
-});
+
+
+require __DIR__ . '/auth.php';

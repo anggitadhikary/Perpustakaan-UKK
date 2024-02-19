@@ -5,13 +5,13 @@
             <h5 class="card-title">Tambah Buku</h5>
 
             <!-- Vertical Form -->
-            <form action='{{ url('buku/') }}' method='post' class="row g-3" enctype="multipart/form-data">
+            <form action='{{ url('/buku') }}' method='post' class="row g-3" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="col-12">
                     <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
                     <div class="col-sm-10">
-                        {{-- @if() --}}
+                        {{-- @if --}}
                         <img src="" alt="" class="img-preview img-fluid mb-3 col-sm-10 d-block"
                             style="width: 450px; height: 280px;">
                         <input type="hidden" name="oldImage" value="">

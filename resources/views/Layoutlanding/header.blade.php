@@ -37,13 +37,13 @@
                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                  aria-haspopup="true" aria-expanded="false">Pages</a>
                              <ul class="dropdown-menu">
-                                 {{-- @if (auth()->user()) --}}
-                                 <li class="nav-item">
-                                     <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
-                                 </li>
-                                 <li class="nav-item"> <a href="{{ url('profile') }}" class="nav-link">Profile</a>
-                                 </li>
-                                 {{-- @endif --}}
+                                 @if (auth()->user())
+                                     <li class="nav-item">
+                                         <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                                     </li>
+                                     <li class="nav-item"> <a href="{{ url('profile') }}" class="nav-link">Profile</a>
+                                     </li>
+                                 @endif
 
 
                              </ul>
@@ -52,12 +52,13 @@
 
                      <ul class="nav-shop">
 
-                         {{-- @guest --}}
+                         @guest
 
-                         <li class="nav-item"><a class="button button-header" href="">Login</a></li>
+                             <li class="nav-item"><a class="button button-header" href="{{ url('login') }}">Login</a></li>
 
-                         <li class="nav-item"><a class="button button-header" href="">Register</a></li>
-                         {{-- @endguest --}}
+                             <li class="nav-item"><a class="button button-header" href="{{ url('register') }}">Register</a>
+                             </li>
+                         @endguest
                      </ul>
                  </div>
              </div>
