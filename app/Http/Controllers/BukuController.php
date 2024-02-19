@@ -145,6 +145,9 @@ class BukuController extends Controller
      */
     public function destroy(string $id)
     {
-        
+        $buku = buku::findorFail($id);
+        File::delete(public_path('storage/buku') . '/' . $buku->gambar);
+        $buku->delete();
+        return redirect()->to('buku')->with('succes', 'Berhasil edit data');
     }
 }
