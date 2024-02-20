@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 
 class PeminjamanController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
+        // dd("test");
         $pinjam = peminjaman::latest()->with('user')->with('buku')->paginate(5);
         // $pinjam = peminjaman::latest()->paginate(5);
 
@@ -42,6 +43,7 @@ class PeminjamanController extends Controller
             'tanggal_pinjam' => 'required',
             'tanggal_kembali' => 'required',
             'jumlah' => 'required',
+            'status' => 'required',
         ], [
             'tanggal_pinjam.required' => ' Tanggal Pinjam harus diisi',
             'tanggal_kembali.required' => ' Tanggal Kembali harus diisi',
@@ -54,7 +56,8 @@ class PeminjamanController extends Controller
             'tanggal_pinjam' => $request->tanggal_pinjam,
             'tanggal_kembali' => $request->tanggal_kembali,
             'status' => $request->status,
-            'jumlah' => $request->jumlah
+            'jumlah' => $request->jumlah,
+            'status' => $request->status
 
         ]);
         return redirect()->to('pinjam')->with('succes', 'Berhasil tambah data');
@@ -102,12 +105,17 @@ class PeminjamanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    
+
     public function destroy(string $id)
     {
         $pinjam = peminjaman::findorFail($id);
 
         $pinjam->delete();
         return redirect()->to('pinjam')->with('succes', 'Berhasil hapus data');
+    }
+    public function cetak()
+    {
+        $pinjam = peminjaman::latest()->with('user')->with('buku')->paginate(2);
+        return view('peminjaman.cetak', compact('pinjam'));
     }
 }

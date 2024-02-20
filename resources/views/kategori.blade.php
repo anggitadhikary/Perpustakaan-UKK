@@ -73,10 +73,10 @@
                                        </ul> --}}
                                         </div>
                                         <div class="card-body">
-                                            <p>Comedy</p>
+                                            <p>{{ $item->genre }}</p>
                                             <h4 class="card-product__title"><a
-                                                    href="{{ url('Buku/detail/' . $item->slug) }}">Quartz Belt
-                                                    Watch</a></h4>
+                                                    href="{{ url('Buku/detail/' . $item->slug) }}">{{ $item->judul }}</a>
+                                            </h4>
                                             {{-- <p class="card-product__price">$150.00</p> --}}
                                         </div>
                                     </div>

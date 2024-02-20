@@ -25,7 +25,7 @@
                             <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
                                     style="border-radius: 5px"></a>
                             <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
+                                <a href="#" class="title d-flex align-items-center">{{ $koleksi->id_buku }}</a>
                                 <div class="price">Comedy</div>
                             </div>
                         </div>

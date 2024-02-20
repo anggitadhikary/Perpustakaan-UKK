@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\buku;
 use App\Models\koleksi;
+use App\Models\ulasan;
 use Illuminate\Http\Request;
 
 class KoleksiController extends Controller
@@ -13,6 +14,8 @@ class KoleksiController extends Controller
      */
     public function index()
     {
+        $koleksi = koleksi::all();
+        return view('koleksi', compact('koleksi'));
     }
 
     /**
@@ -24,8 +27,9 @@ class KoleksiController extends Controller
         // dd($buku);
         $user = auth()->user();
         $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->first();
+        $ulasan = ulasan::all();
 
-        return view('product-detail', compact('koleksi', 'buku', 'user'));
+        return view('product-detail', compact('koleksi', 'buku', 'user', 'ulasan'));
     }
 
     /**
@@ -75,7 +79,7 @@ class KoleksiController extends Controller
      */
     public function destroy(string $id)
     {
-        $koleksi = koleksi::findorFail();
+        $koleksi = koleksi::firstOrFail();
         if (auth()->user()->id === $koleksi->id_user) {
             $koleksi->delete();
             return redirect()->back()->with('success', 'Koleksi dihapus');

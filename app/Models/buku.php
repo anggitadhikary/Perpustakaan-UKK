@@ -32,6 +32,10 @@ class buku extends Model
     {
         return $this->hasMany(koleksi::class, 'id_koleksi');
     }
+    public function ulasan()
+    {
+        return $this->hasMany(koleksi::class, 'id_koleksi');
+    }
 
     public function sluggable(): array
     {

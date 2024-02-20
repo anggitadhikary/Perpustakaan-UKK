@@ -4,22 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class peminjaman extends Model
+class ulasan extends Model
 {
     use HasFactory;
-    protected $table = 'peminjaman';
-
-    protected $primaryKey = 'id_peminjaman';
-
+    protected $table = 'ulasan';
+    protected $primaryKey = 'id_ulasan';
     protected $fillable = [
         'id_user',
         'id_buku',
-        'tanggal_pinjam',
-        'tanggal_kembali',
-        'jumlah',
-        // 'status',
+        'ulasan',
+        'rating',
     ];
 
     public function User()
@@ -32,5 +27,3 @@ class peminjaman extends Model
         return $this->belongsTo(buku::class, 'id_buku');
     }
 }
-
- 

@@ -3864,6 +3864,7 @@ a {
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
+    border-radius: 15px;
 }
 .product_description_area .tab-content .total_rate .box_total h4 {
     font-size: 48px;

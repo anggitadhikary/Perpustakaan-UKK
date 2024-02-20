@@ -6,6 +6,10 @@
             <a class="btn btn-primary btn-sm mb-3" title="Create" href="{{ url('pinjam/create') }}" role="button"><i
                     class="bi bi-plus-lg"></i> Create</a>
 
+            <a class="btn btn-success btn-sm mb-3" title="print" href="{{ url('pinjam-cetak') }}" role="button"><i
+                    class="bi bi-printer"></i> Print</a>
+
+
             <!-- Table with hoverable rows -->
             <table class="table table-hover">
                 <thead>
@@ -66,4 +70,7 @@
             {{ $pinjam->links() }}
         </div>
     </div>
+    {{-- <script>
+        window.print
+    </script> --}}
 @endsection

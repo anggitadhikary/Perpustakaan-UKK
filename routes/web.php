@@ -4,6 +4,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UlasanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+// Route::get('/koleksi1', function () {
+//     return view('koleksi');
+// })->name('koleksi1');
 
 // Route::get('/kategori', function () {
 //     return view('kategori');
@@ -38,7 +43,8 @@ Route::group(['middleware' => 'role:admin,petugas'], function () {
     })->name('dashboard');
 
     Route::resource('buku', BukuController::class);
-    Route::resource('pinjam', PeminjamanController::class);
+    Route::resource('/pinjam', PeminjamanController::class);
+    Route::get('pinjam-cetak', [PeminjamanController::class, 'cetak']);
 });
 
 Route::group(['middleware' => 'role:peminjam'], function () {
@@ -46,10 +52,15 @@ Route::group(['middleware' => 'role:peminjam'], function () {
         return view('peminjam');
     })->name('peminjam');
 });
-
 Route::get('/kategori', [BukuController::class, 'list']);
 Route::get('/Buku/detail/{slug}', [KoleksiController::class, 'create']);
 Route::post('/koleksi', [KoleksiController::class, 'store'])->name('koleksi.store');
-Route::delete('koleksi/{id}', [KoleksiController::class, 'delete'])->name('koleksi.delete');
+Route::delete('koleksi/{id}', [KoleksiController::class, 'destroy'])->name('koleksi.delete');
+Route::post('ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+
+
+
+// Route::get('/koleksi/index', [KoleksiController::class, 'index']);
+
 
 require __DIR__ . '/auth.php';

@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="s_product_text pt-5">
-                        <h3>Faded SkyBlu Denim Jeans</h3>
+                        <h3>{{ $buku->judul }}</h3>
                         {{-- <h2>$149.99</h2> --}}
                         <ul class="list">
                             <li><a class="active" href="#"><span>Category</span> : {{ $buku->genre }}</a></li>
@@ -42,15 +42,23 @@
                         </ul>
                         <p>{{ $buku->deskripsi }}</p>
 
-
                         <div class="card_area d-flex align-items-center">
-                            <form action="{{ route('koleksi.store') }}" method="POST">
-                                <button class="icon_btn"><i class="bi bi-heart"></i></button>
-                            </form>
-                            <form action="{{ route('koleksi.delete') }}" method="POST">
-                                
-                                <button class="icon_btnrmv"><i class="bi bi-trash3"></i></button>
-                            </form>
+                            @auth
+                                @if ($koleksi)
+                                    <form action="{{ route('koleksi.delete', $koleksi->id_koleksi) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="icon_btnrmv"><i class="bi bi-trash3"></i></button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('koleksi.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id_user" id="id_user" value="{{ auth()->user()->id }}">
+                                        <input type="hidden" name="id_buku" id="id_buku" value="{{ $buku->id_buku }}">
+                                        <button class="icon_btn"><i class="bi bi-heart"></i></button>
+                                    </form>
+                                @endif
+                            @endauth
                         </div>
 
                     </div>
@@ -116,94 +124,57 @@
                                     <div class="box_total">
                                         <h5>Overall</h5>
                                         <h4>4.0</h4>
-                                        <h6>(03 Reviews)</h6>
+                                        <h6>({{ $ulasan->count() }} Reviews)</h6>
                                     </div>
                                 </div>
+
                                 <div class="col-6">
                                     <div class="rating_list">
-                                        <h3>Based on 3 Reviews</h3>
+                                        <h3>Based on {{ $ulasan->count() }} Reviews</h3>
                                         <ul class="list">
-                                            <li><a href="#">5 Star <i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                            <li><a href="#">4 Star <i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                            <li><a href="#">3 Star <i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                            <li><a href="#">2 Star <i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-                                            <li><a href="#">1 Star <i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                                            @forelse ($ulasan as $review)
+                                                <li>
+                                                    <a href="">
+
+                                                        {{ $review->rating }} Star
+                                                        @for ($i = 0; $i < $review->rating; $i++)
+                                                            <i class="fa fa-star"></i>
+                                                        @endfor
+                                                    </a>
+                                                </li>
+                                            @empty
+                                                <p>Belum ada rating</p>
+                                            @endforelse
+
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="review_list">
-                                <div class="review_item">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/review-1.png" alt="">
+                            <div class="review_list mt-3">
+                                @forelse ($ulasan as $review)
+                                    <div class="review_item">
+                                        <div class="media">
+                                            {{-- <div class="d-flex">
+                                            <img src="{{ asset('img/product/review-1.png') }}" alt="">
+                                        </div> --}}
+                                            <div class="media-body">
+                                                <h4>{{ $review->user->name }}</h4>
+                                                @for ($i = 0; $i < $review->rating; $i++)
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
+
+                                            </div>
                                         </div>
-                                        <div class="media-body">
-                                            <h4>Blake Ruiz</h4>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
+                                        <p>{{ $review->ulasan }}</p>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et
-                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                        laboris nisi ut aliquip ex ea
-                                        commodo</p>
-                                </div>
-                                <div class="review_item">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/review-2.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Blake Ruiz</h4>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et
-                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                        laboris nisi ut aliquip ex ea
-                                        commodo</p>
-                                </div>
-                                <div class="review_item">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/review-3.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Blake Ruiz</h4>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et
-                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                        laboris nisi ut aliquip ex ea
-                                        commodo</p>
-                                </div>
+                                @empty
+                                    <p>Belom ada review</p>
+                                @endforelse
+
+
+
                             </div>
 
                         </div>
@@ -212,45 +183,44 @@
                             <div class="review_box">
                                 <h4>Add a Review</h4>
                                 <p>Your Rating:</p>
-                                <div class="rating-css">
-                                    <div class="star-icon">
-                                        <input type="radio" value="1" name="product_rating" checked
-                                            id="rating1">
-                                        <label for="rating1" class="fa fa-star"></label>
-                                        <input type="radio" value="2" name="product_rating" id="rating2">
-                                        <label for="rating2" class="fa fa-star"></label>
-                                        <input type="radio" value="3" name="product_rating" id="rating3">
-                                        <label for="rating3" class="fa fa-star"></label>
-                                        <input type="radio" value="4" name="product_rating" id="rating4">
-                                        <label for="rating4" class="fa fa-star"></label>
-                                        <input type="radio" value="5" name="product_rating" id="rating5">
-                                        <label for="rating5" class="fa fa-star"></label>
-                                    </div>
-                                </div>
-                                <p>Outstanding</p>
-                                <form action="#/" class="form-contact form-review mt-3">
+
+                                <form action="{{ route('ulasan.store') }}" method="POST">
+                                    @csrf
                                     <div class="form-group">
-                                        <input class="form-control" name="name" type="text"
-                                            placeholder="Enter your name" required>
+                                        <div class="rating-css">
+                                            <div class="star-icon">
+                                                <input type="hidden" name="id_user" id="id_user"
+                                                    value="{{ auth()->user()->id }}">
+                                                <input type="hidden" name="id_buku" id="id_buku"
+                                                    value="{{ $buku->id_buku }}">
+                                                <input type="radio" value="1" name="rating" checked
+                                                    id="rating1">
+                                                <label for="rating1" class="fa fa-star"></label>
+                                                <input type="radio" value="2" name="rating" id="rating2">
+                                                <label for="rating2" class="fa fa-star"></label>
+                                                <input type="radio" value="3" name="rating" id="rating3">
+                                                <label for="rating3" class="fa fa-star"></label>
+                                                <input type="radio" value="4" name="rating" id="rating4">
+                                                <label for="rating4" class="fa fa-star"></label>
+                                                <input type="radio" value="5" name="rating" id="rating5">
+                                                <label for="rating5" class="fa fa-star"></label>
+                                            </div>
+                                        </div>
                                     </div>
+                                    {{-- <p>Outstanding</p> --}}
+
                                     <div class="form-group">
-                                        <input class="form-control" name="email" type="email"
-                                            placeholder="Enter email address" required>
+                                        <textarea class="form-control different-control w-100" name="ulasan" id="ulasan" cols="30" rows="5"
+                                            placeholder="Enter your review"></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control" name="subject" type="text"
-                                            placeholder="Enter Subject">
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5"
-                                            placeholder="Enter Message"></textarea>
-                                    </div>
+
                                     <div class="form-group text-center text-md-right mt-3">
                                         <button type="submit" class="button button--active button-review">Submit
                                             Now</button>
                                     </div>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
