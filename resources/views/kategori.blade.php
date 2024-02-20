@@ -74,7 +74,8 @@
                                         </div>
                                         <div class="card-body">
                                             <p>Comedy</p>
-                                            <h4 class="card-product__title"><a href="{{ url('buku-detail') }}">Quartz Belt
+                                            <h4 class="card-product__title"><a
+                                                    href="{{ url('Buku/detail/' . $item->slug) }}">Quartz Belt
                                                     Watch</a></h4>
                                             {{-- <p class="card-product__price">$150.00</p> --}}
                                         </div>
@@ -95,7 +96,7 @@
 
 
     <!-- ================ top product area start ================= -->
-    <section class="related-product-area">
+    {{-- <section class="related-product-area">
         <div class="container">
             <div class="section-intro pb-60px">
                 <p>Popular Item in the market</p>
@@ -207,6 +208,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ================ top product area end ================= -->
 @endsection

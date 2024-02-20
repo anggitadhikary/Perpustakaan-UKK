@@ -26,8 +26,8 @@
                 <div class="col-lg-6">
                     <div class="">
                         <div class="single-prd-item">
-                            <img class="img-fluid" src="img/Book-cover/bookcover-comedy.jpg" style="border-radius: 5px"
-                                alt="">
+                            <img class="img-fluid" src="{{ Storage::url('public/buku/') . $buku->gambar }}"
+                                style="border-radius: 5px" alt="">
                         </div>
 
                     </div>
@@ -37,22 +37,18 @@
                         <h3>Faded SkyBlu Denim Jeans</h3>
                         {{-- <h2>$149.99</h2> --}}
                         <ul class="list">
-                            <li><a class="active" href="#"><span>Category</span> : Household</a></li>
-                            <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                            <li><a class="active" href="#"><span>Category</span> : {{ $buku->genre }}</a></li>
+                            <li><a href="#"><span>Stock</span> : {{ $buku->stok }}</a></li>
                         </ul>
-                        <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking
-                            for
-                            something that can make your interior look awesome, and at the same time give you the pleasant
-                            warm feeling
-                            during the winter.</p>
+                        <p>{{ $buku->deskripsi }}</p>
+
 
                         <div class="card_area d-flex align-items-center">
-                            <form action="" method="POST">
-
+                            <form action="{{ route('koleksi.store') }}" method="POST">
                                 <button class="icon_btn"><i class="bi bi-heart"></i></button>
                             </form>
-                            <form action="" method="POST">
-
+                            <form action="{{ route('koleksi.delete') }}" method="POST">
+                                
                                 <button class="icon_btnrmv"><i class="bi bi-trash3"></i></button>
                             </form>
                         </div>
@@ -112,7 +108,9 @@
 
                 <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
                     <div class="row">
+
                         <div class="col-lg-6">
+
                             <div class="row total_rate">
                                 <div class="col-6">
                                     <div class="box_total">
@@ -144,6 +142,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="review_list">
                                 <div class="review_item">
                                     <div class="media">
@@ -206,7 +205,9 @@
                                         commodo</p>
                                 </div>
                             </div>
+
                         </div>
+
                         <div class="col-lg-6">
                             <div class="review_box">
                                 <h4>Add a Review</h4>

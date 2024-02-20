@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -23,9 +24,9 @@ Route::get('/', function () {
 // Route::get('/kategori', function () {
 //     return view('kategori');
 // });
-Route::get('/buku-detail', function () {
-    return view('product-detail');
-});
+// Route::get('/', function () {
+//     return view('product-detail');
+// });
 
 Route::group(['middleware' => 'role:admin,petugas'], function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,6 +48,8 @@ Route::group(['middleware' => 'role:peminjam'], function () {
 });
 
 Route::get('/kategori', [BukuController::class, 'list']);
-
+Route::get('/Buku/detail/{slug}', [KoleksiController::class, 'create']);
+Route::post('/koleksi', [KoleksiController::class, 'store'])->name('koleksi.store');
+Route::delete('koleksi/{id}', [KoleksiController::class, 'delete'])->name('koleksi.delete');
 
 require __DIR__ . '/auth.php';
