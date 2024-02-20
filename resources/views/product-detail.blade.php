@@ -22,6 +22,7 @@
     <!--================Single Product Area =================-->
     <div class="product_image_area">
         <div class="container">
+            @include('Layoutlanding.message')
             <div class="row s_product_inner">
                 <div class="col-lg-6">
                     <div class="">
@@ -72,17 +73,14 @@
     <section class="product_description_area">
         <div class="container">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                        aria-selected="true">Description</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
                         aria-controls="review" aria-selected="false">Reviews</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                {{-- <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of
                         all shapes
                         and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick
@@ -111,7 +109,7 @@
                         more than one would suddenly need to learn how to adjust all the cooking practices utilized before
                         into a
                         streamlined plan of cooking that is more efficient for one person creating less</p>
-                </div>
+                </div> --}}
 
 
                 <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
@@ -181,7 +179,7 @@
 
                         <div class="col-lg-6">
                             <div class="review_box">
-                                @include('Layoutlanding.message')
+
                                 <h4>Add a Review</h4>
                                 <p>Your Rating:</p>
 
@@ -194,8 +192,7 @@
                                                     value="{{ auth()->user()->id }}">
                                                 <input type="hidden" name="id_buku" id="id_buku"
                                                     value="{{ $buku->id_buku }}">
-                                                <input type="radio" value="1" name="rating" checked
-                                                    id="rating1">
+                                                <input type="radio" value="1" name="rating" checked id="rating1">
                                                 <label for="rating1" class="fa fa-star"></label>
                                                 <input type="radio" value="2" name="rating" id="rating2">
                                                 <label for="rating2" class="fa fa-star"></label>

@@ -52,18 +52,18 @@ Route::group(['middleware' => 'role:admin,petugas'], function () {
 });
 
 Route::group(['middleware' => 'role:peminjam'], function () {
-    Route::get('/peminjam', function () {
-        return view('peminjam');
-    })->name('peminjam');
+    // Route::get('/peminjam', function () {
+    //     return view('peminjam');
+    // })->name('peminjam');
+    Route::get('/Buku/detail/{slug}', [KoleksiController::class, 'create']);
+    Route::post('/koleksi', [KoleksiController::class, 'store'])->name('koleksi.store');
+    Route::delete('koleksi/{id}', [KoleksiController::class, 'destroy'])->name('koleksi.delete');
+    Route::get('/koleksi', [KoleksiController::class, 'index']);
+
+    Route::post('ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+    Route::get('/kategori', [BukuController::class, 'list']);
 });
-Route::get('/kategori', [BukuController::class, 'list']);
 
-Route::get('/Buku/detail/{slug}', [KoleksiController::class, 'create']);
-Route::post('/koleksi', [KoleksiController::class, 'store'])->name('koleksi.store');
-Route::delete('koleksi/{id}', [KoleksiController::class, 'destroy'])->name('koleksi.delete');
-Route::get('/koleksi', [KoleksiController::class, 'index']);
-
-Route::post('ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
 
 

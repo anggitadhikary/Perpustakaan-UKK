@@ -70,7 +70,7 @@ class KoleksiController extends Controller
             'id_buku' => $request->id_buku,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Book is bookmarked');
     }
 
     /**
@@ -105,7 +105,7 @@ class KoleksiController extends Controller
         $koleksi = koleksi::firstOrFail();
         if (auth()->user()->id === $koleksi->id_user) {
             $koleksi->delete();
-            return redirect()->back()->with('success', 'Koleksi dihapus');
+            return redirect()->back()->with('success', 'Collection is deleted');
         }
         return redirect()->back()->with('error', 'Tidak memiliki izin');
     }

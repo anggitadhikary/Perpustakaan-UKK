@@ -13,14 +13,14 @@
                  </button>
                  <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                      <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                         <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Beranda</a></li>
+                         <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                          <li class="nav-item submenu dropdown">
                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                 aria-haspopup="true" aria-expanded="false">Buku</a>
+                                 aria-haspopup="true" aria-expanded="false">Book</a>
                              <ul class="dropdown-menu">
-                                 <li class="nav-item"><a class="nav-link" href="{{ url('kategori') }}">List Buku</a>
+                                 <li class="nav-item"><a class="nav-link" href="{{ url('kategori') }}">Book List</a>
                                  </li>
-                                 <li class="nav-item"><a class="nav-link" href="{{ url('koleksi') }}">Koleksi</a>
+                                 <li class="nav-item"><a class="nav-link" href="{{ url('koleksi') }}">Collection</a>
                                  </li>
 
                              </ul>
