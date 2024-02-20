@@ -16,152 +16,35 @@
         </div>
     </section>
     <!-- ================ top product area start ================= -->
-    <section class="related-product-area pt-5">
+    <section class="section-margin calc-60px">
         <div class="container">
-            <div class="row mt-30 pb-5">
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper mb-2">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">{{ $koleksi->id_buku }}</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-horror.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Action</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {{-- <div class="section-intro pb-60px">
+                <p>New Book in the market</p>
+                <h2>New <span class="section-intro__style">Book</span></h2>
+            </div> --}}
+            <div class="row">
 
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper mb-2">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @foreach ($koleksi as $collection)
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card text-center card-product">
+                            <div class="card-product__img">
+                                <img class="card-img" src="{{ Storage::url('public/buku/') . $collection->buku->gambar }}"
+                                    alt="">
 
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper mb-2">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
                             </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
+                            <div class="card-body">
+                                <p>{{ $collection->buku->genre }}</p>
+                                <h4 class="card-product__title"><a
+                                        href="{{ url('Buku/detail/' . $collection->buku->slug) }}">{{ $collection->buku->judul }}</a>
+                                </h4>
+                                {{-- <p class="card-product__price">$150.00</p> --}}
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper mb-2">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
-                <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="single-search-product-wrapper mb-2">
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div>
-                        {{-- <div class="single-search-product d-flex">
-                            <a href="#"><img src="img/Book-cover/bookcover-scifi.jpg" alt=""
-                                    style="border-radius: 5px"></a>
-                            <div class="desc">
-                                <a href="#" class="title d-flex align-items-center">Gray Coffee Cup</a>
-                                <div class="price">Comedy</div>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </section>

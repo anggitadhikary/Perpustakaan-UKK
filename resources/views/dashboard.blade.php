@@ -9,8 +9,10 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-
-    <section class="section dashboard">
+    <h1 class="text-center">
+        Selamat Datang di dashboard
+    </h1>
+    {{-- <section class="section dashboard">
         <div class="row">
 
             <!-- Left side columns -->
@@ -672,5 +674,5 @@
             </div><!-- End Right side columns -->
 
         </div>
-    </section>
+    </section> --}}
 @endsection

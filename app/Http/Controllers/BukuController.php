@@ -9,6 +9,13 @@ use Illuminate\View\View;
 
 class BukuController extends Controller
 {
+    public function landing()
+    {
+        $buku = buku::latest()->paginate(8);
+        // dd($buku);
+        return view('welcome', compact('buku'));
+    }
+
     public function list()
     {
         $buku = buku::latest()->paginate(5);

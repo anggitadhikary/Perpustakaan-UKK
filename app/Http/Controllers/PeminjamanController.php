@@ -43,7 +43,6 @@ class PeminjamanController extends Controller
             'tanggal_pinjam' => 'required',
             'tanggal_kembali' => 'required',
             'jumlah' => 'required',
-            'status' => 'required',
         ], [
             'tanggal_pinjam.required' => ' Tanggal Pinjam harus diisi',
             'tanggal_kembali.required' => ' Tanggal Kembali harus diisi',
@@ -55,9 +54,7 @@ class PeminjamanController extends Controller
             'id_buku' => $request->id_buku,
             'tanggal_pinjam' => $request->tanggal_pinjam,
             'tanggal_kembali' => $request->tanggal_kembali,
-            'status' => $request->status,
             'jumlah' => $request->jumlah,
-            'status' => $request->status
 
         ]);
         return redirect()->to('pinjam')->with('succes', 'Berhasil tambah data');

@@ -2426,7 +2426,7 @@ a {
     border-radius: 5px;
 }
 .single-search-product img {
-    max-width: 70px;
+    max-width: 100px;
     height: auto;
 }
 .single-search-product .desc {
@@ -2438,7 +2438,7 @@ a {
     color: #222;
     margin-top: 0;
     display: inline-block;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 .single-search-product .desc .price {

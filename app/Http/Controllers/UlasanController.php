@@ -16,13 +16,26 @@ class UlasanController extends Controller
             'rating' => 'required',
         ]);
 
-        ulasan::create([
-            'id_user' => $request->id_user,
-            'id_buku' => $request->id_buku,
-            'ulasan' => $request->ulasan,
-            'rating' => $request->rating,
-        ]);
+        $ulasanExisting = ulasan::where('id_user', $request->id_user)
+            ->where('id_buku', $request->id_buku)
+            ->first();
 
-        return redirect()->back();
+        if (!$ulasanExisting) {
+
+            ulasan::create([
+                'id_user' => $request->id_user,
+                'id_buku' => $request->id_buku,
+                'ulasan' => $request->ulasan,
+                'rating' => $request->rating,
+            ]);
+            return redirect()->back()->with('success', 'Terimakasih atas ulasanya');
+        } else {
+            return back()->with('error', 'Anda sudah beri ulasan pada buku ini');
+        }
+        // if ($ulasanExisting) {
+        //     
+        // }
+
+
     }
 }

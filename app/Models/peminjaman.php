@@ -19,7 +19,7 @@ class peminjaman extends Model
         'tanggal_pinjam',
         'tanggal_kembali',
         'jumlah',
-        // 'status',
+        'status',
     ];
 
     public function User()

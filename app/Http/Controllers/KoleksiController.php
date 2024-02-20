@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\buku;
 use App\Models\koleksi;
 use App\Models\ulasan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KoleksiController extends Controller
@@ -14,8 +15,16 @@ class KoleksiController extends Controller
      */
     public function index()
     {
-        $koleksi = koleksi::all();
-        return view('koleksi', compact('koleksi'));
+        $user = auth()->user();
+        // // dd($user);
+        // $buku = buku::get();
+        // dd($buku);
+        // $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->get();
+        // dd($koleksi);
+        // $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->first();
+        $koleksi = koleksi::where('id_user', $user->id)->with('buku')->get();
+        // dd($koleksi);
+        return view('koleksi', compact('koleksi', 'user'));
     }
 
     /**
@@ -28,8 +37,22 @@ class KoleksiController extends Controller
         $user = auth()->user();
         $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->first();
         $ulasan = ulasan::all();
+        // dd($koleksi);
+        //Tambah rating
+        $totalRating = $ulasan->sum('rating');
+        //hitung ulasannya ada berapa
+        $totalUlasan = $ulasan->count();
+        //kalo ulasan lebih dari 0
+        if ($totalUlasan > 0) {
+            //ulasan / jumlah rating
+            $rataratarating = $totalRating / $totalUlasan;
+        } else {
+            //kalo rating nya belom ada maka ratingnya 0
+            $rataratarating = 0;
+        }
 
-        return view('product-detail', compact('koleksi', 'buku', 'user', 'ulasan'));
+
+        return view('product-detail', compact('koleksi', 'buku', 'user', 'ulasan', 'rataratarating'));
     }
 
     /**

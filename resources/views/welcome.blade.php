@@ -25,154 +25,35 @@
         </section>
         <!--================ Hero banner start =================-->
 
-        <!--================ Hero Carousel start =================-->
-        {{-- <section class="section-margin mt-0">
-            <div class="owl-carousel owl-theme hero-carousel">
-                <div class="hero-carousel__slide">
-                    <img src="img/Book-cover/bookcover-fantasy.jpg" alt="" class="img-fluid">
-                    <a href="#" class="hero-carousel__slideOverlay">
-                        <h3>Wireless Headphone</h3>
-                        <p>Accessories Item</p>
-                    </a>
-                </div>
-                <div class="hero-carousel__slide">
-                    <img src="img/Book-cover/bookcover-fantasy2.png" alt="" class="img-fluid">
-                    <a href="#" class="hero-carousel__slideOverlay">
-                        <h3>Wireless Headphone</h3>
-                        <p>Accessories Item</p>
-                    </a>
-                </div>
-                <div class="hero-carousel__slide">
-                    <img src="img/Book-cover/bookcover-fantasy3.png" alt="" class="img-fluid">
-                    <a href="#" class="hero-carousel__slideOverlay">
-                        <h3>Wireless Headphone</h3>
-                        <p>Accessories Item</p>
-                    </a>
-                </div>
-                <div class="owl-carousel owl-theme hero-carousel">
-                    <div class="hero-carousel__slide">
-                        <img src="img/Book-cover/bookcover-fantasy.jpg" alt="" class="img-fluid">
-                        <a href="#" class="hero-carousel__slideOverlay">
-                            <h3>Wireless Headphone</h3>
-                            <p>Accessories Item</p>
-                        </a>
-                    </div>
-                </div>
-        </section> --}}
-        <!--================ Hero Carousel end =================-->
-
         <!-- ================ trending product section start ================= -->
         <section class="section-margin calc-60px">
             <div class="container">
                 <div class="section-intro pb-60px">
-                    <p>Popular Item in the market</p>
-                    <h2>Trending <span class="section-intro__style">Product</span></h2>
+                    <p>New Book in the market</p>
+                    <h2>New <span class="section-intro__style">Book</span></h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-fantasy.jpg" alt="">
 
-                            </div>
-                            <div class="card-body">
-                                <p>Fantasy</p>
-                                <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
+                    @foreach ($buku as $book)
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="card text-center card-product">
+                                <div class="card-product__img">
+                                    <img class="card-img" src="{{ Storage::url('public/buku/') . $book->gambar }}"
+                                        alt="">
+
+                                </div>
+                                <div class="card-body">
+                                    <p>{{ $book->genre }}</p>
+                                    <h4 class="card-product__title"><a
+                                            href="{{ url('Buku/detail/' . $book->slug) }}">{{ $book->judul }}</a>
+                                    </h4>
+                                    {{-- <p class="card-product__price">$150.00</p> --}}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-fantasy2.png" alt="">
+                    @endforeach
 
-                            </div>
-                            <div class="card-body">
-                                <p>Fantasy</p>
-                                <h4 class="card-product__title"><a href="single-product.html">Women Freshwash</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-romance.jpg" alt="">
 
-                            </div>
-                            <div class="card-body">
-                                <p>Romance</p>
-                                <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-action.jpg" alt="">
-
-                            </div>
-                            <div class="card-body">
-                                <p>Action</p>
-                                <h4 class="card-product__title"><a href="single-product.html">Room Flash Light</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-comedy.jpg" alt="">
-
-                            </div>
-                            <div class="card-body">
-                                <p>Comedy</p>
-                                <h4 class="card-product__title"><a href="single-product.html">Man Office Bag</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-horror.jpg" alt="">
-
-                            </div>
-                            <div class="card-body">
-                                <p>Horror</p>
-                                <h4 class="card-product__title"><a href="single-product.html">Charging Car</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-scifi.jpg" alt="">
-
-                            </div>
-                            <div class="card-body">
-                                <p>Sci-Fi</p>
-                                <h4 class="card-product__title"><a href="single-product.html">Blutooth Speaker</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" src="img/Book-cover/bookcover-nonfiksi.jpeg" alt="">
-
-                            </div>
-                            <div class="card-body">
-                                <p>Non-Fiksi</p>
-                                <h4 class="card-product__title"><a href="#">Charging Car</a></h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

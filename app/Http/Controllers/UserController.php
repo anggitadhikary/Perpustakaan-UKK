@@ -12,4 +12,5 @@ class UserController extends Controller
         // dd($buku);
         return view('user.index', compact('user'));
     }
+    
 }

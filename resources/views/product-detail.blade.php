@@ -123,7 +123,7 @@
                                 <div class="col-6">
                                     <div class="box_total">
                                         <h5>Overall</h5>
-                                        <h4>4.0</h4>
+                                        <h4>{{ $rataratarating }}</h4>
                                         <h6>({{ $ulasan->count() }} Reviews)</h6>
                                     </div>
                                 </div>
@@ -181,6 +181,7 @@
 
                         <div class="col-lg-6">
                             <div class="review_box">
+                                @include('Layoutlanding.message')
                                 <h4>Add a Review</h4>
                                 <p>Your Rating:</p>
 

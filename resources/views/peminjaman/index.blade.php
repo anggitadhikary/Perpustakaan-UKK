@@ -43,8 +43,8 @@
                                 @endif
                             </td>
                             <td>
-                                <a href='{{ url('pinjam/' . $item->id_peminjaman) }}' class="btn btn-success btn-sm"
-                                    title="View"><i class="bi bi-eye"></i></a>
+                                {{-- <a href='{{ url('pinjam/' . $item->id_peminjaman) }}' class="btn btn-success btn-sm"
+                                    title="View"><i class="bi bi-eye"></i></a> --}}
                                 <a href='{{ url('pinjam/' . $item->id_peminjaman . '/edit') }}'
                                     class="btn btn-warning btn-sm" title="Edit"><i class="bi bi-pencil-square"></i></a>
                                 <form action="{{ url('pinjam/' . $item->id_peminjaman) }}" class="d-inline" method="POST"
@@ -70,7 +70,4 @@
             {{ $pinjam->links() }}
         </div>
     </div>
-    {{-- <script>
-        window.print
-    </script> --}}
 @endsection
