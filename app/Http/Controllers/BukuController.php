@@ -126,9 +126,9 @@ class BukuController extends Controller
 
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
-            $gambar->storeAs('public/buku' . $gambar->hashName());
+            $gambar->storeAs('public/buku', $gambar->hashName());
 
-            File::delete(public_path('storage/buku') . '/' . $buku->gambar);
+            File::delete(public_path('public/buku') . '/' . $buku->gambar);
 
             $buku->update([
                 'gambar' => $gambar->hashName(),

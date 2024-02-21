@@ -13,10 +13,10 @@
                     <div class="col-sm-10">
                         @if ($buku->gambar)
                             <img src="{{ Storage::url('public/buku/') . $buku->gambar }}" alt=""
-                                class="img-preview img-fluid mb-3 col-sm-10 d-block" style="width: 450px; height: 280px;">
+                                class="img-preview img-fluid mb-3 col-sm-10 d-block" style="width: auto; height: 480px;">
                             <input type="hidden" name="oldImage" value="">
                         @else
-                            <img class="img-preview img-fluid mb-3 col-sm-10 d-block" style="width: 450px; height: 280px;">
+                            <img class="img-preview img-fluid mb-3 col-sm-10 d-block" style="width: auto; height: 480px;">
                         @endif
                         <input class="form-control" type="file" id="gambar" name="gambar" onchange="previewImage()">
                     </div>
@@ -42,13 +42,19 @@
                         value="{{ old('tahunterbit', $buku->tahunterbit) }}">
                 </div>
 
-                <div class="col-12">
+                {{-- <div class="col-12">
                     <label for="deskripsi" class="form-label">deskripsi</label>
                     <input type="text" class="form-control" id="deskripsi" name="deskripsi"
                         value="{{ old('deskripsi', $buku->deskripsi) }}">
-                </div>
+                </div> --}}
+
                 <div class="col-12">
-                    <label for="stok" class="form-label">stok</label>
+                    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                    <textarea class="form-control" style="height: 100px" id="deskripsi" name="deskripsi">{{ old('deskripsi', $buku->deskripsi) }}</textarea>
+                </div>
+
+                <div class="col-12">
+                    <label for="stok" class="form-label">Stok</label>
                     <input type="text" class="form-control" id="stok" name="stok"
                         value="{{ old('stok', $buku->stok) }}">
                 </div>
@@ -57,14 +63,15 @@
                     <div class="col-sm-12">
                         <select class="form-select" aria-label="Default select example" name="genre" id="genre">
                             <option selected>Open this select menu</option>
-                            <option value="fantasy" {{ $buku->genre == 'fantasy' ? 'selected' : '' }}>fantasy</option>
-                            <option value="romance" {{ $buku->genre == 'romance' ? 'selected' : '' }}>romance</option>
-                            <option value="action" {{ $buku->genre == 'action' ? 'selected' : '' }}>action</option>
-                            <option value="comedy" {{ $buku->genre == 'comedy' ? 'selected' : '' }}>comedy</option>
-                            <option value="sci-fi" {{ $buku->genre == 'sci-fi' ? 'selected' : '' }}>sci-fi</option>
-                            <option value="adventure" {{ $buku->genre == 'adventure' ? 'selected' : '' }}>adventure
+                            <option value="fantasy" {{ $buku->genre == 'fantasy' ? 'selected' : '' }}>Fantasy</option>
+                            <option value="romance" {{ $buku->genre == 'romance' ? 'selected' : '' }}>Romance</option>
+                            <option value="action" {{ $buku->genre == 'action' ? 'selected' : '' }}>Action</option>
+                            <option value="comedy" {{ $buku->genre == 'comedy' ? 'selected' : '' }}>Comedy</option>
+                            <option value="horror" {{ $buku->genre == 'horror' ? 'selected' : '' }}>Horror</option>
+                            <option value="sci-fi" {{ $buku->genre == 'sci-fi' ? 'selected' : '' }}>Sci-fi</option>
+                            <option value="adventure" {{ $buku->genre == 'adventure' ? 'selected' : '' }}>Adventure
                             </option>
-                            <option value="thriller">thriller</option>
+                            <option value="thriller" {{ $buku->genre == 'thriller' ? 'selected' : '' }}>thriller</option>
                         </select>
                     </div>
                 </div>

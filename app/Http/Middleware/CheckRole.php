@@ -23,7 +23,7 @@ class CheckRole
             }
 
             Auth::logout();
-            return redirect()->to('login')->with('status', 'you are not authtorized this page23');
+            return redirect()->to('login')->with('status', 'You are not authtorized this page');
         }
     }
 }

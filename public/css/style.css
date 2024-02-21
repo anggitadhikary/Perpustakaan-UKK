@@ -103,6 +103,9 @@ a {
 .section-margin {
     margin: 45px 0;
 }
+.section-margin a.link-secondary  {
+    color:rgba(0, 0, 0, 0.8)
+}
 @media (min-width: 980px) {
     .section-margin {
         margin: 70px 0;

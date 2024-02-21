@@ -24,7 +24,7 @@
             </div> --}}
             <div class="row">
 
-                @foreach ($koleksi as $collection)
+                @forelse ($koleksi as $collection)
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card text-center card-product">
                             <div class="card-product__img">
@@ -37,14 +37,15 @@
                                 <h4 class="card-product__title"><a
                                         href="{{ url('Buku/detail/' . $collection->buku->slug) }}">{{ $collection->buku->judul }}</a>
                                 </h4>
-                                {{-- <p class="card-product__price">$150.00</p> --}}
                             </div>
                         </div>
                     </div>
-                @endforeach
-
-
-
+                @empty
+                    <div class="alert alert-secondary col-md-12 text-center" role="alert">
+                        Belum ada koleksi nih. Mau tambah koleksi ? <a href="{{ url('kategori') }}"
+                            class="link-secondary">Klik link ini</a>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

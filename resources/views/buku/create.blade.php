@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
                     <div class="col-sm-10">
-                        <img class="img-preview img-fluid mb-3 col-sm-10 d-block" style="width: 450px; height: 280px;">
+                        <img class="img-preview img-fluid mb-3 col-sm-10 d-block" style="width: auto; height: 480px;">
                         <input class="form-control" type="file" id="gambar" name="gambar" onchange="previewImage()">
                     </div>
                 </div>
@@ -31,10 +31,16 @@
                     <input type="text" class="form-control" id="tahunterbit" name="tahunterbit">
                 </div>
 
-                <div class="col-12">
+                {{-- <div class="col-12">
                     <label for="deskripsi" class="form-label">deskripsi</label>
                     <input type="text" class="form-control" id="deskripsi" name="deskripsi">
+                </div> --}}
+
+                <div class="col-12">
+                    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                    <textarea class="form-control" style="height: 100px" id="deskripsi" name="deskripsi"></textarea>
                 </div>
+
                 <div class="col-12">
                     <label for="stok" class="form-label">Stok</label>
                     <input type="text" class="form-control" id="stok" name="stok">

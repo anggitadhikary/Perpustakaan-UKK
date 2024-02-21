@@ -35,11 +35,11 @@ Route::get('/', [BukuController::class, 'landing'])->name('welcome');
 // Route::get('/', function () {
 //     return view('product-detail');
 // });
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 Route::group(['middleware' => 'role:admin,petugas'], function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -61,8 +61,8 @@ Route::group(['middleware' => 'role:peminjam'], function () {
     Route::get('/koleksi', [KoleksiController::class, 'index']);
 
     Route::post('ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
-    Route::get('/kategori', [BukuController::class, 'list']);
 });
+Route::get('/kategori', [BukuController::class, 'list']);
 
 
 

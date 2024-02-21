@@ -112,7 +112,7 @@ class PeminjamanController extends Controller
     }
     public function cetak()
     {
-        $pinjam = peminjaman::latest()->with('user')->with('buku')->paginate(2);
+        $pinjam = peminjaman::latest()->with('user')->with('buku')->paginate(200);
         return view('peminjaman.cetak', compact('pinjam'));
     }
 }

@@ -20,44 +20,51 @@
                              <ul class="dropdown-menu">
                                  <li class="nav-item"><a class="nav-link" href="{{ url('kategori') }}">Book List</a>
                                  </li>
-                                 <li class="nav-item"><a class="nav-link" href="{{ url('koleksi') }}">Collection</a>
-                                 </li>
+                                 @auth
+
+
+                                     <li class="nav-item"><a class="nav-link" href="{{ url('koleksi') }}">Collection</a>
+                                     </li>
+                                 @endauth
 
                              </ul>
                          </li>
-                         <li class="nav-item submenu dropdown">
-                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                 aria-haspopup="true" aria-expanded="false">More</a>
-                             <ul class="dropdown-menu">
-                                 @if (auth()->user())
-                                     @if (auth()->user()->role == 'admin')
+                         @auth
+                             <li class="nav-item submenu dropdown">
+                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                     aria-haspopup="true" aria-expanded="false">More</a>
+                                 <ul class="dropdown-menu">
+                                     @if (auth()->user())
+                                         @if (auth()->user()->role == 'admin')
+                                             <li class="nav-item">
+                                                 <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                                             </li>
+                                             <li class="nav-item"> <a href="{{ url('profile') }}"
+                                                     class="nav-link">Profile</a>
+                                             </li>
+                                         @endif
+
                                          <li class="nav-item">
-                                             <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
-                                         </li>
-                                         <li class="nav-item"> <a href="{{ url('profile') }}"
-                                                 class="nav-link">Profile</a>
+                                             <form method="POST" action="{{ route('logout') }}">
+                                                 @csrf
+
+                                                 {{-- <a href="{{ route('logout') }}" class="nav-link">Logout</a> --}}
+                                                 <x-responsive-nav-link :href="route('logout')"
+                                                     onclick="event.preventDefault();
+                                                              this.closest('form').submit();"
+                                                     class="nav-link">
+                                                     {{ __('Log Out') }}
+                                                 </x-responsive-nav-link>
+                                             </form>
                                          </li>
                                      @endif
 
-                                     <li class="nav-item">
-                                         <form method="POST" action="{{ route('logout') }}">
-                                             @csrf
 
-                                             {{-- <a href="{{ route('logout') }}" class="nav-link">Logout</a> --}}
-                                             <x-responsive-nav-link :href="route('logout')"
-                                                 onclick="event.preventDefault();
-                                                              this.closest('form').submit();"
-                                                 class="nav-link">
-                                                 {{ __('Log Out') }}
-                                             </x-responsive-nav-link>
-                                         </form>
-                                     </li>
-                                 @endif
-
-
-                             </ul>
-                         </li>
+                                 </ul>
+                             </li>
+                         @endauth
                      </ul>
+
 
                      <ul class="nav-shop">
 

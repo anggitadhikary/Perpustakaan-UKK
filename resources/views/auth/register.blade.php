@@ -12,7 +12,7 @@
 
         <!-- UserName -->
         <div class="mt-4">
-            <x-input-label for="username" :value="__('username')" />
+            <x-input-label for="username" :value="__('Username')" />
             <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
                 required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('username')" class="mt-2" />
@@ -20,7 +20,7 @@
 
         <!-- Alamat -->
         <div class="mt-4">
-            <x-input-label for="alamat" :value="__('alamat')" />
+            <x-input-label for="alamat" :value="__('Alamat')" />
             <x-text-input id="alamat" class="block mt-1 w-full" type="text" name="alamat" :value="old('alamat')"
                 required autofocus autocomplete="alamat" />
             <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
@@ -28,7 +28,7 @@
 
         <!-- telepon -->
         <div class="mt-4">
-            <x-input-label for="telepon" :value="__('telepon')" />
+            <x-input-label for="telepon" :value="__('Telepon')" />
             <x-text-input id="telepon" class="block mt-1 w-full" type="text" name="telepon" :value="old('telepon')"
                 required autofocus autocomplete="telepon" />
             <x-input-error :messages="$errors->get('telepon')" class="mt-2" />
@@ -36,7 +36,7 @@
 
         <!-- nik -->
         <div class="mt-4">
-            <x-input-label for="nik" :value="__('nik')" />
+            <x-input-label for="nik" :value="__('NIK')" />
             <x-text-input id="nik" class="block mt-1 w-full" type="text" name="nik" :value="old('nik')"
                 required autofocus autocomplete="nik" />
             <x-input-error :messages="$errors->get('nik')" class="mt-2" />

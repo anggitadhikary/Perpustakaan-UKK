@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::user() && Auth::user()->role != 'peminjam') {
             return redirect()->route('dashboard');
         } else {
-            return redirect()->route('welcome')->with('status', 'you are not authoritized32');
+            return redirect()->route('welcome')->with('status', 'You are not authoritized');
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

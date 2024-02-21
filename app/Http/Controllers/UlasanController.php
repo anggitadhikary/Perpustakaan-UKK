@@ -18,7 +18,7 @@ class UlasanController extends Controller
 
         $ulasanExisting = ulasan::where('id_user', $request->id_user)
             ->where('id_buku', $request->id_buku)
-            ->first();
+            ->get();
 
         if (!$ulasanExisting) {
 
@@ -32,10 +32,5 @@ class UlasanController extends Controller
         } else {
             return back()->with('error', 'Anda sudah beri ulasan pada buku ini');
         }
-        // if ($ulasanExisting) {
-        //     
-        // }
-
-
     }
 }

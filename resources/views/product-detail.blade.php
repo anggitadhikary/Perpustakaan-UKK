@@ -5,11 +5,11 @@
         <div class="container h-100">
             <div class="blog-banner">
                 <div class="text-center">
-                    <h1>Shop Single</h1>
+                    <h1>Book Detail</h1>
                     <nav aria-label="breadcrumb" class="banner-breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Shop Single</li>
+                            <li class="breadcrumb-item active" aria-current="page">Book Detail</li>
                         </ol>
                     </nav>
                 </div>
@@ -154,11 +154,11 @@
                                 @forelse ($ulasan as $review)
                                     <div class="review_item">
                                         <div class="media">
-                                            {{-- <div class="d-flex">
-                                            <img src="{{ asset('img/product/review-1.png') }}" alt="">
-                                        </div> --}}
+                                            <div class="d-flex">
+                                                {{-- <img src="{{ asset('img/product/review-1.png') }}" alt=""> --}}
+                                            </div>
                                             <div class="media-body">
-                                                <h4>{{ $review->user->name }}</h4>
+                                                {{-- <h4>{{ $review->user->name }}</h4> --}}
                                                 @for ($i = 0; $i < $review->rating; $i++)
                                                     <i class="fa fa-star"></i>
                                                 @endfor
