@@ -158,7 +158,12 @@
                                                 {{-- <img src="{{ asset('img/product/review-1.png') }}" alt=""> --}}
                                             </div>
                                             <div class="media-body">
-                                                {{-- <h4>{{ $review->user->name }}</h4> --}}
+                                                @if ($review->user)
+                                                    <h4>{{ $review->user->name }}</h4>
+                                                @else
+                                                    <h4>[Account Deleted]</h4>
+                                                @endif
+
                                                 @for ($i = 0; $i < $review->rating; $i++)
                                                     <i class="fa fa-star"></i>
                                                 @endfor

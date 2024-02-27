@@ -21,19 +21,21 @@
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php $i = $buku->firstItem(); ?>
                     @forelse($buku as $item)
                         <tr>
                             <th>{{ $i }}</th>
                             <th> <img src="{{ Storage::url('public/buku/') . $item->gambar }}" class="rounded"
-                                    style="width: 165px">
+                                    style="height: 250px">
                             </th>
                             <td>{{ $item->judul }}</td>
                             <td>{{ $item->penulis }}</td>
                             <td>{{ $item->penerbit }}</td>
                             <td>{{ $item->tahunterbit }}</td>
-                            <td>{{ $item->deskripsi }}</td>
+                            <td>{{ Str::limit($item->deskripsi, 100) }}</td>
+
                             <td>{{ $item->stok }}</td>
                             <td>
                                 <a href='{{ url('buku/' . $item->id_buku) }}' class="btn btn-success btn-sm"
@@ -59,7 +61,7 @@
                 </tbody>
             </table>
             <!-- End Table with hoverable rows -->
-            {{-- {{ $buku->links() }} --}}
+            {{ $buku->links() }}
         </div>
     </div>
 @endsection

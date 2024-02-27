@@ -20,6 +20,7 @@ function previewImage() {
   }
 
 }
+
 (function () {
   "use strict";
 

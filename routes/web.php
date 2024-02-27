@@ -67,6 +67,8 @@ Route::get('/kategori', [BukuController::class, 'list']);
 
 
 
+
+
 // Route::get('/koleksi/index', [KoleksiController::class, 'index']);
 
 

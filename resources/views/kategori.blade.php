@@ -33,7 +33,7 @@
                                         <li class="filter-list border-bottom mb-2"><a href=""
                                                 class="">Action</a>
                                         </li>
-                                        <li class="filter-list border-bottom mb-2"><a href=""
+                                        <li class="filter-list border-bottom mb-2"><a href="{{ url('category-comedy') }}"
                                                 class="">Comedy</a>
                                         </li>
                                         <li class="filter-list border-bottom mb-2"><a href=""
@@ -66,11 +66,6 @@
                                         <div class="card-product__img">
                                             <img class="card-img" src="{{ Storage::url('public/buku/') . $item->gambar }}"
                                                 alt="">
-                                            {{-- <ul class="card-product__imgOverlay">
-                                           <li><button><i class="ti-search"></i></button></li>
-                                           <li><button><i class="ti-shopping-cart"></i></button></li>
-                                           <li><button><i class="ti-heart"></i></button></li>
-                                       </ul> --}}
                                         </div>
                                         <div class="card-body">
                                             <p>{{ $item->genre }}</p>

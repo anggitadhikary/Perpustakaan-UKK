@@ -36,7 +36,9 @@ class KoleksiController extends Controller
         // dd($buku);
         $user = auth()->user();
         $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->first();
-        $ulasan = ulasan::all();
+        // $ulasan = ulasan::all();
+        $ulasan = ulasan::where('id_buku', $buku->id_buku)->get();
+
         // dd($koleksi);
         //Tambah rating
         $totalRating = $ulasan->sum('rating');
@@ -50,6 +52,8 @@ class KoleksiController extends Controller
             //kalo rating nya belom ada maka ratingnya 0
             $rataratarating = 0;
         }
+
+
 
 
         return view('product-detail', compact('koleksi', 'buku', 'user', 'ulasan', 'rataratarating'));
@@ -72,6 +76,7 @@ class KoleksiController extends Controller
 
         return redirect()->back()->with('success', 'Book is bookmarked');
     }
+
 
     /**
      * Display the specified resource.
@@ -102,11 +107,18 @@ class KoleksiController extends Controller
      */
     public function destroy(string $id)
     {
-        $koleksi = koleksi::firstOrFail();
+        $koleksi = koleksi::findOrFail($id);
+
+        // Pastikan pengguna yang sedang login adalah pemilik koleksi
         if (auth()->user()->id === $koleksi->id_user) {
+            // Hapus koleksi buku
             $koleksi->delete();
-            return redirect()->back()->with('success', 'Collection is deleted');
+
+            // Redirect kembali dengan pesan sukses
+            return redirect()->back()->with('success', 'Buku berhasil dihapus dari koleksi.');
         }
-        return redirect()->back()->with('error', 'Tidak memiliki izin');
+
+        // Redirect kembali dengan pesan gagal jika pengguna tidak memiliki hak akses
+        return redirect()->back()->with('error', 'Anda tidak memiliki izin untuk menghapus buku dari koleksi ini.');
     }
 }
