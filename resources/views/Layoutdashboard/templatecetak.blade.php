@@ -43,9 +43,10 @@
 
 <body>
 
-    <main id="main" class="main">
+    <div class="container-fluid mt-3 p-3">
+
         @yield('content')
-    </main>
+    </div>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

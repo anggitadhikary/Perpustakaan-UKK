@@ -42,7 +42,7 @@
                     </div>
                 @empty
                     <div class="alert alert-secondary col-md-12 text-center" role="alert">
-                        Belum ada koleksi nih. Mau tambah koleksi ? <a href="{{ url('kategori') }}"
+                        Belum ada koleksi nih. Mau tambah koleksi ? <a href="{{ url('List-Buku') }}"
                             class="link-secondary">Klik link ini</a>
                     </div>
                 @endforelse

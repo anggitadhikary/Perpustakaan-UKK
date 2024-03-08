@@ -16,12 +16,7 @@ class KoleksiController extends Controller
     public function index()
     {
         $user = auth()->user();
-        // // dd($user);
-        // $buku = buku::get();
-        // dd($buku);
-        // $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->get();
-        // dd($koleksi);
-        // $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->first();
+
         $koleksi = koleksi::where('id_user', $user->id)->with('buku')->get();
         // dd($koleksi);
         return view('koleksi', compact('koleksi', 'user'));
@@ -32,7 +27,7 @@ class KoleksiController extends Controller
      */
     public function create($slug)
     {
-        $buku = buku::where('slug', $slug)->firstOrFail();
+        $buku = buku::where('slug', $slug)->with(['kategori'])->firstOrFail();
         // dd($buku);
         $user = auth()->user();
         $koleksi = koleksi::where('id_user', $user->id)->where('id_buku', $buku->id_buku)->first();
@@ -52,9 +47,6 @@ class KoleksiController extends Controller
             //kalo rating nya belom ada maka ratingnya 0
             $rataratarating = 0;
         }
-
-
-
 
         return view('product-detail', compact('koleksi', 'buku', 'user', 'ulasan', 'rataratarating'));
     }

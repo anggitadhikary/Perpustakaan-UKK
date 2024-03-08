@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-12">
                     <label for="Judul" class="form-label">Judul</label>
-                    <input type="text" class="form-control" id="Judul" name="judul">
+                    <input type="text" class="form-control" id="judul" name="judul">
                 </div>
                 <div class="col-12">
                     <label for="penulis" class="form-label">Penulis</label>
@@ -31,40 +31,31 @@
                     <input type="text" class="form-control" id="tahunterbit" name="tahunterbit">
                 </div>
 
-                {{-- <div class="col-12">
-                    <label for="deskripsi" class="form-label">deskripsi</label>
-                    <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-                </div> --}}
-
                 <div class="col-12">
                     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                     <textarea class="form-control" style="height: 100px" id="deskripsi" name="deskripsi"></textarea>
+                </div>
+                <div class="col-12">
+                    <label for="id_kategori" class="form-label">Kategori</label>
+                    <div class="col-sm-12">
+                        <select class="form-select" aria-label="Default select example" name="id_kategori" id="id_kategori">
+                            <option selected>Pilih Kategori</option>
+                            @foreach ($kategori as $kategoris)
+                                <option value="{{ $kategoris->id_kategori }}">{{ $kategoris->nm_kategori }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="col-12">
                     <label for="stok" class="form-label">Stok</label>
                     <input type="text" class="form-control" id="stok" name="stok">
                 </div>
-                <div class="col-12">
-                    <label for="genre" class="form-label">Genre</label>
-                    <div class="col-sm-12">
-                        <select class="form-select" aria-label="Default select example" name="genre" id="genre">
-                            <option selected>Open this select menu</option>
-                            <option value="fantasy">fantasy</option>
-                            <option value="romance">romance</option>
-                            <option value="action">action</option>
-                            <option value="comedy">comedy</option>
-                            <option value="sci-fi">sci-fi</option>
-                            <option value="adventure">adventure</option>
-                            <option value="thriller">thriller</option>
-                        </select>
-                    </div>
-                </div>
-
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
+
             </form><!-- Vertical Form -->
 
         </div>

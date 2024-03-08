@@ -10,15 +10,13 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Gambar</th>
-                        <th scope="col">Judul</th>
-                        <th scope="col">Penulis</th>
-                        <th scope="col">Penerbit</th>
-                        <th scope="col">Tahun Terbit</th>
-                        <th scope="col">Deskripsi</th>
-                        <th scope="col">Stok Buku</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col-1">#</th>
+                        <th scope="col-3">Gambar</th>
+                        <th scope="col-2">Judul</th>
+                        <th scope="col-2">Deskripsi</th>
+                        <th scope="col-1">Stok Buku</th>
+                        <th scope="col-1">Kategori</th>
+                        <th scope="col-2">Aksi</th>
                     </tr>
                 </thead>
 
@@ -26,22 +24,22 @@
                     <?php $i = $buku->firstItem(); ?>
                     @forelse($buku as $item)
                         <tr>
-                            <th>{{ $i }}</th>
-                            <th> <img src="{{ Storage::url('public/buku/') . $item->gambar }}" class="rounded"
-                                    style="height: 250px">
-                            </th>
+                            <td>{{ $i }}</td>
+                            <td> <img src="{{ Storage::url('public/buku/') . $item->gambar }}" class="rounded"
+                                    style="width: 250px">
+                            </td>
                             <td>{{ $item->judul }}</td>
-                            <td>{{ $item->penulis }}</td>
-                            <td>{{ $item->penerbit }}</td>
-                            <td>{{ $item->tahunterbit }}</td>
-                            <td>{{ Str::limit($item->deskripsi, 100) }}</td>
 
+                            <td>{{ Str::limit($item->deskripsi, 50) }}</td>
                             <td>{{ $item->stok }}</td>
+                            <td>{{ $item->kategori->nm_kategori ?? '' }}</td>
                             <td>
                                 <a href='{{ url('buku/' . $item->id_buku) }}' class="btn btn-success btn-sm"
                                     title="View"><i class="bi bi-eye"></i></a>
+
                                 <a href='{{ url('buku/' . $item->id_buku . '/edit') }}' class="btn btn-warning btn-sm"
                                     title="Edit"><i class="bi bi-pencil-square"></i></a>
+
                                 <form action="{{ url('buku/' . $item->id_buku) }}" class="d-inline" method="POST"
                                     onsubmit="return confirm('Yakin akan menghapus data ini?')">
                                     @csrf

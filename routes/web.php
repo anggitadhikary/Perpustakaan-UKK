@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\ProfileController;
@@ -24,17 +25,6 @@ use Illuminate\Support\Facades\Route;
 // })->name('welcome');
 
 Route::get('/', [BukuController::class, 'landing'])->name('welcome');
-
-// Route::get('/koleksi1', function () {
-//     return view('koleksi');
-// })->name('koleksi1');
-
-// Route::get('/kategori', function () {
-//     return view('kategori');
-// });
-// Route::get('/', function () {
-//     return view('product-detail');
-// });
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -49,20 +39,19 @@ Route::group(['middleware' => 'role:admin,petugas'], function () {
     Route::resource('/pinjam', PeminjamanController::class);
     Route::get('pinjam-cetak', [PeminjamanController::class, 'cetak']);
     Route::resource('user', UserController::class);
+
+    Route::resource('kategori', KategoriController::class);
 });
 
 Route::group(['middleware' => 'role:peminjam'], function () {
-    // Route::get('/peminjam', function () {
-    //     return view('peminjam');
-    // })->name('peminjam');
     Route::get('/Buku/detail/{slug}', [KoleksiController::class, 'create']);
     Route::post('/koleksi', [KoleksiController::class, 'store'])->name('koleksi.store');
     Route::delete('koleksi/{id}', [KoleksiController::class, 'destroy'])->name('koleksi.delete');
     Route::get('/koleksi', [KoleksiController::class, 'index']);
-
     Route::post('ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 });
-Route::get('/kategori', [BukuController::class, 'list']);
+
+Route::get('/List-Buku', [BukuController::class, 'list']);
 
 
 

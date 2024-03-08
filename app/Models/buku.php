@@ -14,6 +14,7 @@ class buku extends Model
     protected $table = 'buku';
     protected $primaryKey = 'id_buku';
     protected $fillable = [
+        'id_kategori',
         'judul',
         'penulis',
         'penerbit',
@@ -24,6 +25,13 @@ class buku extends Model
         'genre',
         'stok',
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(kategori::class, 'id_kategori', 'id_kategori');
+    }
+
+
     public function peminjaman()
     {
         return $this->hasMany(peminjaman::class, 'id_buku');

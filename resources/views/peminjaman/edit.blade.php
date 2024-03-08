@@ -5,7 +5,7 @@
             <h5 class="card-title">Update Peminjaman</h5>
 
             <!-- Vertical Form -->
-            <form action="{{ url('pinjam/' . $pinjam->id_peminjaman ) }}" class="row g-3" method="POST">
+            <form action="{{ url('pinjam/' . $pinjam->id_peminjaman) }}" class="row g-3" method="POST">
                 @csrf
                 @method('PUT')
 

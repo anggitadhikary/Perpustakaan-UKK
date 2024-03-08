@@ -17,14 +17,19 @@
                             <img src="{{ Storage::url('public/buku/') . $buku->gambar }}" alt="" class="img-fluid"
                                 style="max-height: 320px; border-radius: 5px;">
                         </div>
+
                         <h2 class="text-center mt-3">{{ $buku->judul }}</h2>
 
+                        <div class="d-flex justify-content-evenly">
+                            <p><i class="bi bi-tag" style="color: #6476ff"></i> : {{ $buku->kategori->nm_kategori }}</p>
+                            <p><i class="bi bi-person-fill" style="color: #6476ff"></i> : {{ $buku->penulis }}</p>
+                            <p><i class="bi bi-tag" style="color: #6476ff"></i> : {{ $buku->penerbit }}</p>
+                            <p><i class="bi bi-calendar" style="color: #6476ff"></i> : {{ $buku->tahunterbit }}</p>
+                        </div>
 
                         <div class="mt-3">
                             <p>{{ $buku->deskripsi }}</p>
                         </div>
-
-
                     </div>
                 </div>
 

@@ -42,12 +42,6 @@
                         value="{{ old('tahunterbit', $buku->tahunterbit) }}">
                 </div>
 
-                {{-- <div class="col-12">
-                    <label for="deskripsi" class="form-label">deskripsi</label>
-                    <input type="text" class="form-control" id="deskripsi" name="deskripsi"
-                        value="{{ old('deskripsi', $buku->deskripsi) }}">
-                </div> --}}
-
                 <div class="col-12">
                     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                     <textarea class="form-control" style="height: 100px" id="deskripsi" name="deskripsi">{{ old('deskripsi', $buku->deskripsi) }}</textarea>
@@ -59,25 +53,19 @@
                         value="{{ old('stok', $buku->stok) }}">
                 </div>
                 <div class="col-12">
-                    <label for="genre" class="form-label">Genre</label>
+                    <label for="id_kategori" class="form-label">Kategori</label>
                     <div class="col-sm-12">
-                        <select class="form-select" aria-label="Default select example" name="genre" id="genre">
-                            <option selected>Open this select menu</option>
-                            <option value="fantasy" {{ $buku->genre == 'fantasy' ? 'selected' : '' }}>Fantasy</option>
-                            <option value="romance" {{ $buku->genre == 'romance' ? 'selected' : '' }}>Romance</option>
-                            <option value="action" {{ $buku->genre == 'action' ? 'selected' : '' }}>Action</option>
-                            <option value="comedy" {{ $buku->genre == 'comedy' ? 'selected' : '' }}>Comedy</option>
-                            <option value="horror" {{ $buku->genre == 'horror' ? 'selected' : '' }}>Horror</option>
-                            <option value="sci-fi" {{ $buku->genre == 'sci-fi' ? 'selected' : '' }}>Sci-fi</option>
-                            <option value="adventure" {{ $buku->genre == 'adventure' ? 'selected' : '' }}>Adventure
-                            </option>
-                            <option value="thriller" {{ $buku->genre == 'thriller' ? 'selected' : '' }}>thriller</option>
+                        <select class="form-select" aria-label="Default select example" name="id_kategori" id="id_kategori">
+                            <option selected>Pilih Kategori</option>
+                            @foreach ($kategori as $kategoris)
+                                <option value="{{ $kategoris->id_kategori }}"
+                                    @if ($kategoris->id_kategori == $buku->id_kategori) selected @endif>{{ $kategoris->nm_kategori }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
             </form><!-- Vertical Form -->
 

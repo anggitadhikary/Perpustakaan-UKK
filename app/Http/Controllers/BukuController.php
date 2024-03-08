@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\buku;
+use App\Models\kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
@@ -18,9 +19,10 @@ class BukuController extends Controller
 
     public function list()
     {
-        $buku = buku::latest()->paginate(5);
-        // dd($buku);
-        return view('kategori', compact('buku'));
+        $buku = buku::latest()->with('kategori')->paginate(5);
+
+        // dd($bukuRomance);
+        return view('list-buku', compact('buku'));
     }
 
     /**
@@ -28,7 +30,9 @@ class BukuController extends Controller
      */
     public function index(): View
     {
-        $buku = buku::latest()->paginate(5);
+        // $kategori = kategori::all();
+        $buku = buku::with(['kategori'])->paginate(5);
+        // dd($buku);
         return view('buku.index', compact('buku'));
     }
 
@@ -37,7 +41,9 @@ class BukuController extends Controller
      */
     public function create()
     {
-        return view('buku.create');
+        $kategori = kategori::all();
+
+        return view('buku.create', compact('kategori'));
     }
 
     /**
@@ -52,7 +58,6 @@ class BukuController extends Controller
             'tahunterbit' => 'required',
             'gambar' => 'required|image',
             'deskripsi' => 'required',
-            'genre' => 'required',
             'stok' => 'required',
         ], [
             'judul.required' => 'Judul harus di isi',
@@ -61,7 +66,6 @@ class BukuController extends Controller
             'tahunterbit.required' => 'Tahun terbit harus di isi',
             'gambar.required' => 'Gambar harus di isi',
             'deskripsi.required' => 'Deskripsi harus di isi',
-            'genre.required' => 'genre harus di isi',
             'stok.required' => 'stok harus di isi',
         ]);
 
@@ -69,15 +73,16 @@ class BukuController extends Controller
         $gambar->storeAs('public/buku', $gambar->hashName());
 
         buku::create([
+            'id_kategori' => $request->id_kategori,
             'judul' => $request->judul,
             'penulis' => $request->penulis,
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
             'gambar' => $gambar->hashName(),
             'deskripsi' => $request->deskripsi,
-            'genre' => $request->genre,
             'stok' => $request->stok,
         ]);
+
 
         return redirect()->to('buku')->with('succes', 'Berhasil tambah data');
     }
@@ -96,8 +101,9 @@ class BukuController extends Controller
      */
     public function edit(string $id)
     {
+        $kategori = kategori::all();
         $buku = buku::findorFail($id);
-        return view('buku.edit', compact('buku'));
+        return view('buku.edit', compact('buku', 'kategori'));
     }
 
     /**
@@ -111,7 +117,6 @@ class BukuController extends Controller
             'penerbit' => 'required',
             'tahunterbit' => 'required',
             'deskripsi' => 'required',
-            'genre' => 'required',
             'stok' => 'required',
         ], [
             'judul.required' => 'Judul harus di isi',
@@ -119,7 +124,6 @@ class BukuController extends Controller
             'penerbit.required' => 'Penerbit harus di isi',
             'tahunterbit.required' => 'Tahun terbit harus di isi',
             'deskripsi.required' => 'Deskripsi harus di isi',
-            'genre.required' => 'genre harus di isi',
             'stok.required' => 'stok harus di isi',
         ]);
         $buku = buku::findorFail($id);
@@ -137,7 +141,6 @@ class BukuController extends Controller
                 'penerbit' => $request->penerbit,
                 'tahunterbit' => $request->tahunterbit,
                 'deskripsi' => $request->deskripsi,
-                'genre' => $request->genre,
                 'stok' => $request->stok,
             ]);
         } else {
@@ -147,7 +150,6 @@ class BukuController extends Controller
                 'penerbit' => $request->penerbit,
                 'tahunterbit' => $request->tahunterbit,
                 'deskripsi' => $request->deskripsi,
-                'genre' => $request->genre,
                 'stok' => $request->stok,
             ]);
         }

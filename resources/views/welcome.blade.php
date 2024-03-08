@@ -40,7 +40,6 @@
                                 <div class="card-product__img">
                                     <img class="card-img" src="{{ Storage::url('public/buku/') . $book->gambar }}"
                                         alt="">
-
                                 </div>
                                 <div class="card-body">
                                     <p>{{ $book->genre }}</p>

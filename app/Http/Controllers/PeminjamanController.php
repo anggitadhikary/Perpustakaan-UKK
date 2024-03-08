@@ -70,30 +70,24 @@ class PeminjamanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $peminjamList = User::where('role', 'peminjam')->get();
-        $bukuList = buku::all();
-        $pinjam = peminjaman::findorFail($id);
+    // public function edit(string $id)
+    // {
+    //     $peminjamList = User::where('role', 'peminjam')->get();
+    //     $bukuList = buku::all();
+    //     $pinjam = peminjaman::findorFail($id);
 
-        return view('peminjaman.edit', compact('peminjamList', 'bukuList', 'pinjam'));
-    }
+    //     return view('peminjaman.edit', compact('peminjamList', 'bukuList', 'pinjam'));
+    // }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        $this->validate($request, [
-            'status' => 'required'
-        ], [
-            'status.required' => 'Status harus di isi'
-        ]);
-
         $pinjam = peminjaman::findorFail($id);
 
         $pinjam->update([
-            'status' => $request->status,
+            'status' => '1',
         ]);
 
         return redirect()->to('pinjam')->with('succes', 'Berhasil edit data');
@@ -110,6 +104,7 @@ class PeminjamanController extends Controller
         $pinjam->delete();
         return redirect()->to('pinjam')->with('succes', 'Berhasil hapus data');
     }
+
     public function cetak()
     {
         $pinjam = peminjaman::latest()->with('user')->with('buku')->paginate(200);

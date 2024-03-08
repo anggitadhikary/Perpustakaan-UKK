@@ -15,15 +15,16 @@
                      <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                          <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                          <li class="nav-item submenu dropdown">
-                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                             <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                  aria-haspopup="true" aria-expanded="false">Book</a>
                              <ul class="dropdown-menu">
-                                 <li class="nav-item"><a class="nav-link" href="{{ url('kategori') }}">Book List</a>
+                                 <li class="nav-item"><a class="nav-link {{ Request::is('List-Buku') ? 'active' : '' }}"
+                                         href="{{ url('List-Buku') }}">Book List</a>
                                  </li>
                                  @auth
 
 
-                                     <li class="nav-item"><a class="nav-link" href="{{ url('koleksi') }}">Collection</a>
+                                     <li class="nav-item"><a class="nav-link {{ Request::is('koleksi') ? 'active' : '' }}" href="{{ url('koleksi') }}">Collection</a>
                                      </li>
                                  @endauth
 
@@ -37,10 +38,10 @@
                                      @if (auth()->user())
                                          @if (auth()->user()->role == 'admin')
                                              <li class="nav-item">
-                                                 <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                                                 <a href="{{ url('/dashboard') }}" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">Dashboard</a>
                                              </li>
                                              <li class="nav-item"> <a href="{{ url('profile') }}"
-                                                     class="nav-link">Profile</a>
+                                                     class="nav-link {{ Request::is('profile') ? 'active' : '' }}">Profile</a>
                                              </li>
                                          @endif
 

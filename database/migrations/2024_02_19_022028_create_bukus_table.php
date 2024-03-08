@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('buku', function (Blueprint $table) {
             $table->id('id_buku');
+            $table->foreignId('id_kategori');
             $table->string('judul');
             $table->string('penulis');
             $table->string('penerbit');
@@ -20,7 +21,6 @@ return new class extends Migration
             $table->string('slug');
             $table->string('gambar');
             $table->text('deskripsi');
-            $table->enum('genre', ['fantasy', 'romance', 'action', 'comedy', 'horor', 'sci-fi', 'adventure', 'thriller']);
             $table->integer('stok');
             $table->timestamps();
         });

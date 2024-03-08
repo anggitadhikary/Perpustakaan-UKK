@@ -23,7 +23,11 @@
                         <tr>
                             <th>{{ $i }}</th>
                             <td>{{ $item->buku->judul }}</td>
-                            <td>{{ $item->user->name }}</td>
+                            @if ($item->user)
+                                <td>{{ $item->user->name }}</td>
+                            @else
+                                <td>[Akun Dihapus]</td>
+                            @endif
                             <td>{{ $item->tanggal_pinjam }}</td>
                             <td>{{ $item->tanggal_kembali }}</td>
                             <td>{{ $item->jumlah }}</td>
